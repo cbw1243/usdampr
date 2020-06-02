@@ -1,0 +1,20 @@
+Package: usdampr
+Type: Package
+Title: Request USDA MPR historical data via the LMR API
+Version: 1.0.0
+Authors@R: c(person(given = "Bowen", family = "Chen", role = c("aut", "cre"), email = "bwchen0719@gmail.com", comment = c(ORCID = "0000-0003-0370-2756")),
+            person(given = "Elliott", family = "Dennis", role = "aut"))
+Description: Interface to easily access data via the United States Department of Agriculture (USDA)'s LMR
+  Data API <https://mpr.datamart.ams.usda.gov/>. The downloaded data can be saved for later off-line use. 
+  Also provide relevant information and metadata for each of the input variables needed for sending the data inquery.   
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
+Depends: R (>= 3.6.0)
+URL: https://github.com/cbw1243/usdampr 
+Imports: 
+        httr (>= 1.4.1),
+        jsonlite (>= 1.6),
+        dplyr (>= 0.8.3),
+        tidyr (>= 1.0.0)

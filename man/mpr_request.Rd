@@ -2,36 +2,58 @@
 % Please edit documentation in R/mpr_request.R
 \name{mpr_request}
 \alias{mpr_request}
-\title{Request USDA MPR historical data}
+\title{Request current and historical USDA-AMS MPR data}
 \usage{
-mpr_request(
-  slugs,
-  report_time = format(Sys.Date(), format = "\%m/\%d/\%Y"),
-  message = T
-)
+mpr_request(slugIDs, report_time = NULL, message = TRUE)
 }
 \arguments{
-\item{slugs}{slug IDs. It can be a single slug ID, or multiple slug IDs.}
+\item{slugIDs}{Valid slug IDs (should be four digits, either characters or numerical). Users can supply can either one slug ID or multiple slug IDs.
+See slugInfo for a list of valid slug IDs and report-specific structure.}
 
-\item{report_time}{time to request. The default time is current day. It can be a time interval.}
+\item{report_time}{A valid date(s) associated with slug ID. For LMPR and DPMRP, a specific date should be supplied, such as
+"06/05/2020" for June 5th 2020. For FMMOS, the report year should be supplied, such as 2020 (numerical or character).
+ Users can also request data for a range of time period, such as "06/01/2020:06/05/2020" for data from June 1st 2020 to
+ June 5th 2020. The requested are either daily, weekly, monthly, or yearly, depending on the report data being requested.
+ Supplied dates without report data will return empty lists. The default is the current system date.}
 
-\item{message}{a binary indicator for displaying warning messages or not?}
+\item{message}{A binary indicator for whether to display warning messages or not. Default is TRUE.}
 }
 \value{
-The function returns a list with the requested data.
+The function returns a list with the requested data. Report sections associated with the slug ID are located in sub-lists.
 }
 \description{
-The primary function in the \code{usdampr} package to request data from the USDA LMP API.
+The primary function in the \code{usdampr} package to request data from the United States Department of Agriculture
+Agricultural Marketing Service (USDA-AMS) mandatory price reporting, commonly known as MPR. The \code{usdampr} package
+allows access to the Livestock Mandatory Price Reporting (LMPR), Dairy Products Mandatory Reporting Program DPMRP),
+and Federal Milk Marketing Orders (FMMOS) market report information dataframe. LMPR data includes cattle, hogs, sheep, beef, pork, and lamb.
+Alternatives to this package include text files,
+direct download via mpr.datamart.ams.usda.gov, or direct coding of the API. Starting in April 2020, text files were made permanently unavailable.
 }
 \details{
-To make valid request, users should provide valid slug IDs. The data returned is saved in a list, while each list saves info for a section.
+This function is flexible enough to request data for multiple slug IDs and multiple dates. Yet, successful requests require valid slug IDs.
+The data returns a list containing all report sections in sub-lists for easy access.
+For more information on all valid slug IDs and accompanying report information can be accessed using data(slugInfo).
 }
 \examples{
 \dontrun{
-test1 <- mpr_request(slug = 2463, report_time = '01/25/2020:05/25/2020') # Get livestock
-test2 <- mpr_request(slug = 2991, report_time = '01/25/2020:04/25/2020') # Get daily price data
-test3 <- mpr_request(slug = 3346, report_time = '2018:2019') # Get FMMOS data
+# Load all available slug IDs, report date, report sections, and report frequency
+# If you already know the slug IDs, you can ignore skip thie code
+data(slugInfo)
+# Example 1: One slug ID, single date
+test1a <- mpr_request(c(2461), report_time = '01/31/2020')
+# Example 1: One slug ID, multiple dates
+test1b <- mpr_request(c(2461), report_time = '01/31/2020:03/25/2020')
+# Multiple slug IDs, single date
+test1c <- mpr_request(c(2461, 2463), report_time = '01/31/2020')
+# Multiple slug IDs, multiple dates
+test1d <- mpr_request(c(2461, 2463), report_time = '01/25/2020:03/25/2020')
 
-test4 <- mpr_request(c(2461, 2463), report_time = '01/25/2020:05/25/2020') # Multiple slug IDs
+# Get Livestock Mandatory Price Reporting (LMPR) data.
+test2a <- mpr_request(slug = 2463, report_time = '01/25/2020:03/25/2020')
+# Get Dairy Products Mandatory Reporting Program (DPMRP) data.
+test2b <- mpr_request(slug = 2991, report_time = '01/25/2020:03/25/2020')
+# Get Federal Milk Marketing Orders (FMMOS) data. NAs are returned if the data do not exist.
+test2c <- mpr_request(slug = 3346, report_time = '2018:2019')
+
 }
 }

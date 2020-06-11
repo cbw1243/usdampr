@@ -1,2 +1,4 @@
 # usdampr
- Request USDA MPR historic data
+Request current and historical USDA-AMS MPR data
+
+

@@ -9,5 +9,7 @@ LMPRS requires packers, processors, and importers to report the marketing inform
 Initially, the report data was available at the top of the hour for most reports. Starting on the afternoon of May 4, 2020, LMR will begin releasing report data on LMR Datamart, LMR Web Service and the LMR API in real time. This change brings both voluntary and mandatory report release processes in sync.
 
 ### Usage description
-The usdampr package
+The `usdampr` package provides access to the report data in LMPRS through `R`, and it is built on the LMR Web Service. Technically, all data available at the LMR Web Service can be accessed from the `usdampr` package. 
+
+`mpr_request` is the primary function in the `usdampr` package for making the data requests. 
 

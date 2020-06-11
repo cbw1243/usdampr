@@ -4,35 +4,53 @@
 \alias{mpr_request}
 \title{Request current and historical USDA-AMS MPR data}
 \usage{
-mpr_request(slugIDs, report_time = NULL, message = TRUE)
+mpr_request(
+  slugIDs = NULL,
+  slugIDs_legacy = NULL,
+  report_time = NULL,
+  message = TRUE
+)
 }
 \arguments{
-\item{slugIDs}{Valid slug IDs (should be four digits, either characters or numerical). Users can supply can either one slug ID or multiple slug IDs.
-See slugInfo for a list of valid slug IDs and report-specific structure.}
+\item{slugIDs}{Valid slug IDs. Should be a 4-digit number, either a numerical value or a character.
+Users can provide can either one slug ID or multiple slug IDs. See details.}
 
-\item{report_time}{A valid date(s) associated with slug ID. For LMPR and DPMRP, a specific date should be supplied, such as
-"06/05/2020" for June 5th 2020. For FMMOS, the report year should be supplied, such as 2020 (numerical or character).
- Users can also request data for a range of time period, such as "06/01/2020:06/05/2020" for data from June 1st 2020 to
- June 5th 2020. The requested are either daily, weekly, monthly, or yearly, depending on the report data being requested.
- Supplied dates without report data will return empty lists. The default is the current system date.}
+\item{slugIDs_legacy}{Valid legacy slug IDs. Examples: LM_XB401, LM_XB403.}
+
+\item{report_time}{A valid date (e.g.,'01/31/2020') or period of time (e.g., '01/31/2020:03/25/2020'). The default is the current system date.}
 
 \item{message}{A binary indicator for whether to display warning messages or not. Default is TRUE.}
 }
 \value{
-The function returns a list with the requested data. Report sections associated with the slug ID are located in sub-lists.
+The function returns a list with the requested data. The requested are either daily, weekly, monthly, or yearly, depending on the report data being requested.
+Report sections associated with the slug ID are located in sub-lists. Empty data could be returned if there are no data associated with the request.
 }
 \description{
-The primary function in the \code{usdampr} package to request data from the United States Department of Agriculture
-Agricultural Marketing Service (USDA-AMS) mandatory price reporting, commonly known as MPR. The \code{usdampr} package
-allows access to the Livestock Mandatory Price Reporting (LMPR), Dairy Products Mandatory Reporting Program DPMRP),
-and Federal Milk Marketing Orders (FMMOS) market report information dataframe. LMPR data includes cattle, hogs, sheep, beef, pork, and lamb.
-Alternatives to this package include text files,
-direct download via mpr.datamart.ams.usda.gov, or direct coding of the API. Starting in April 2020, text files were made permanently unavailable.
+This is the primary function in the \code{usdampr} package to request data from the United States
+Department of Agriculture - Agricultural Marketing Service (USDA-AMS) mandatory price reporting, commonly known as MPR.
+This function allow users to access data documented in the Livestock Mandatory Price Reporting (LMPR),
+Dairy Products Mandatory Reporting Program (DPMRP), and Federal Milk Marketing Orders (FMMOS) market reports.
+LMPR contains data for cattle, hogs, sheep, beef, pork, and lamb.
 }
 \details{
-This function is flexible enough to request data for multiple slug IDs and multiple dates. Yet, successful requests require valid slug IDs.
-The data returns a list containing all report sections in sub-lists for easy access.
-For more information on all valid slug IDs and accompanying report information can be accessed using data(slugInfo).
+This function is built on the web service provided by USDA-AMS. Alternatives to this package include text files to be
+directly downloaded via \url{mpr.datamart.ams.usda.gov} (known as DATAMART),
+or direct coding of the API. Starting in April 2020, text files were made permanently unavailable.
+
+The \code{mpr_request} function  provides flexible ways to request data. Specifically, users can download data from a single report or
+multiple reports for a pre-specified report time. Users can also specify slug IDs or the legacy slug IDs to request data.
+
+The data request takes two necessary inputs. The first input is slug ID or legacy slug ID. Slug ID should be a 4-digit number
+(numbers in characters are fine). Examples for slug ID include 2461 (Report name: National Weekly Boxed Beef Cutout & Boxed Beef Cuts),
+2472 (Report name: Weekly Direct Slaughter Cattle). If you happen to not know the slug ID, you can use the legacy slug IDs,
+such as LM_XB459 (Report name: National Weekly Boxed Beef Cutout & Boxed Beef Cuts). When legacy slug IDs are provided, the
+\code{mpr_request} function would perform an internal search for their corresponding slug IDs and then make data requests. The returned
+data are labelled by slug IDs for consistency. Users should provide either slug IDs or legacy slug IDs, not both. The provides slug IDs
+or legacy slug IDs must be valid. Use data(slugInfo) to get a list of valid slug IDs and the report information.
+
+The second input is report time. For LMPR and DPMRP, the report time shoudl be a specific date with year, month and day, such as
+"06/05/2020" for June 5th 2020. For FMMOS, the report time should be a year, such as 2020. Users can request data for a range of time
+ period, such as "06/01/2020:06/05/2020" for data from June 1st 2020 to June 5th 2020.
 }
 \examples{
 \dontrun{
@@ -40,20 +58,26 @@ For more information on all valid slug IDs and accompanying report information c
 # If you already know the slug IDs, you can ignore skip thie code
 data(slugInfo)
 # Example 1: One slug ID, single date
-test1a <- mpr_request(c(2461), report_time = '01/31/2020')
+test1a <- mpr_request(slugIDs = 2461, report_time = '01/31/2020')
+# Now use legacy slug ID
+test1a_legacy <- mpr_request(slugIDs_legacy = 'LM_XB459', report_time = '01/31/2020')
+
 # Example 1: One slug ID, multiple dates
-test1b <- mpr_request(c(2461), report_time = '01/31/2020:03/25/2020')
+test1b <- mpr_request(slugIDs = 2461, report_time = '01/31/2020:03/25/2020')
 # Multiple slug IDs, single date
-test1c <- mpr_request(c(2461, 2463), report_time = '01/31/2020')
+test1c <- mpr_request(slugIDs = c(2461, 2463), report_time = '01/31/2020')
+# Now use legacy slug ID
+test1c_legacy <- mpr_request(slugIDs_legacy = c('LM_XB459', 'LM_XB461'), report_time = '01/31/2020')
+
 # Multiple slug IDs, multiple dates
-test1d <- mpr_request(c(2461, 2463), report_time = '01/25/2020:03/25/2020')
+test1d <- mpr_request(slugIDs = c(2461, 2463), report_time = '01/25/2020:03/25/2020')
 
 # Get Livestock Mandatory Price Reporting (LMPR) data.
-test2a <- mpr_request(slug = 2463, report_time = '01/25/2020:03/25/2020')
+test2a <- mpr_request(slugIDs = 2463, report_time = '01/25/2020:03/25/2020')
 # Get Dairy Products Mandatory Reporting Program (DPMRP) data.
-test2b <- mpr_request(slug = 2991, report_time = '01/25/2020:03/25/2020')
+test2b <- mpr_request(slugIDs = 2991, report_time = '01/25/2020:03/25/2020')
 # Get Federal Milk Marketing Orders (FMMOS) data. NAs are returned if the data do not exist.
-test2c <- mpr_request(slug = 3346, report_time = '2018:2019')
+test2c <- mpr_request(slugIDs = 3346, report_time = '2018:2019')
 
 }
 }

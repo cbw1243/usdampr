@@ -4,12 +4,12 @@
 \name{slugInfo}
 \alias{slugInfo}
 \title{A data set lists all available report information as supplied by USDA-AMS}
-\format{An object of class \code{data.frame} with 119 rows and 8 columns.}
+\format{An object of class \code{data.frame} with 119 rows and 9 columns.}
 \usage{
 data(slugInfo)
 }
 \description{
-The listed reports describes slug ID, slug number, report title, published date, market, market type, office, and section names. The description of the report period always refers to the previous business days and not calendar days. During holidays periods, the “Reported Date” will be more than one day behind the “Report Date”. The time periods are in Central Time
+The listed reports describes slug ID, legacy slug ID, report title, report frequency, market type, office, and section names.
 }
 \examples{
 data(slugInfo)

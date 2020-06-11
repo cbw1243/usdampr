@@ -20,8 +20,24 @@ The `usdampr` package provides access to the report data in LMPRS through `R`, a
   Please refer to the help page of the `mpr_request` function for details. 
   
 ### Examples   
+  Below are some examples to show how the `mpr_request` function should be used. 
+
+  Example 1: Request data for slug ID of 2461 on January 31, 2020
+ ```
+  test1a <- mpr_request(slugIDs = 2461, report_time = '01/31/2020')
+ ```
  
+  Example 2:Request data for slug ID of 2461 and 2463 on January 31, 2020   
+```
+test1c <- mpr_request(slugIDs = c(2461, 2463), report_time = '01/31/2020')
+```
+More examples are provided in the help page of the `mpr_request` function.
 
+### Package installation   
+```
+devtools::install_github('cbw1243/usdampr') # Install the devtools package if
+```
+Install the `devtools` package if you have not done it yet. Use `install.packages('devtools')`.
 
-
-
+### Contact  
+[Bowen Chen]{www.bwchen.com}; [Elliott Dennis]{https://agecon.unl.edu/faculty/elliott-dennis}

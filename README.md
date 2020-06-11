@@ -27,7 +27,7 @@ The `usdampr` package provides access to the report data in LMPRS through `R`, a
   test1a <- mpr_request(slugIDs = 2461, report_time = '01/31/2020')
  ```
  
-  Example 2:Request data for slug ID of 2461 and 2463 on January 31, 2020   
+  Example 2: Request data for slug ID of 2461 and 2463 on January 31, 2020   
 ```
 test1c <- mpr_request(slugIDs = c(2461, 2463), report_time = '01/31/2020')
 ```

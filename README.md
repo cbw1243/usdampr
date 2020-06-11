@@ -11,5 +11,17 @@ Initially, the report data was available at the top of the hour for most reports
 ### Usage description
 The `usdampr` package provides access to the report data in LMPRS through `R`, and it is built on the LMR Web Service. Technically, all data available at the LMR Web Service can be accessed from the `usdampr` package. 
 
-`mpr_request` is the primary function in the `usdampr` package for making the data requests. 
+`mpr_request` is the primary function in the `usdampr` package for making data requests. The data are automatically cleaned so that users can analyze and visualize the requested data without further data processing.
+
+`mpr_request` takes two necessary inputs: slug ID and report time. 
+
+  - slug ID: Users can request data based on slug ID or the legacy slug ID. For example, users can request data from the report of "National Weekly Boxed Beef Cutout & Boxed Beef Cuts" by letting the slug ID be 2461 or the legacy slug ID be LM_XB459. Multiple slug ID can be used to request data from multiple reports at the same time.   
+  - report time: Users shall provide a report time for requesting the data. 
+  Please refer to the help page of the `mpr_request` function for details. 
+  
+### Examples   
+ 
+
+
+
 

@@ -35,7 +35,7 @@ More examples are provided in the help page of the `mpr_request` function.
 
 ### Package installation   
 ```
-devtools::install_github('cbw1243/usdampr') # Install the devtools package if
+devtools::install_github('cbw1243/usdampr')
 ```
 Install the `devtools` package if you have not done it yet. Use `install.packages('devtools')`.
 

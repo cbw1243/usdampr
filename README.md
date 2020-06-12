@@ -41,6 +41,6 @@ Install the `devtools` package if you have not done it yet. Use `install.package
 
 ### Authors & Contact   
 [Bowen Chen](www.bwchen.com), Email: bwchen0719@gmail.com     
-[Elliott Dennis](https://agecon.unl.edu/faculty/elliott-dennis), Email: elliott.dennis@unl.edu    
+[Elliott J. Dennis](https://agecon.unl.edu/faculty/elliott-dennis), Email: elliott.dennis@unl.edu    
 
 

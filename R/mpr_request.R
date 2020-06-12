@@ -30,7 +30,8 @@
 #' @param slugIDs Valid slug IDs. Should be a 4-digit number, either a numerical value or a character.
 #'                Users can provide can either one slug ID or multiple slug IDs. See details.
 #' @param slugIDs_legacy Valid legacy slug IDs. Examples: LM_XB401, LM_XB403.
-#' @param report_time A valid date (e.g.,'01/31/2020') or period of time (e.g., '01/31/2020:03/25/2020'). The default is the current system date.
+#' @param report_time A valid date (e.g.,'01/31/2020') or period of time (e.g., '01/31/2020:03/25/2020').
+#'                    For FMMOS, it should be a year (e.g., 2019). The default is the current system date.
 #' @param message A binary indicator for whether to display warning messages or not. Default is TRUE.
 #'
 #' @return
@@ -82,9 +83,7 @@ mpr_request <- function(slugIDs = NULL, slugIDs_legacy = NULL, report_time = NUL
   if(!is.null(slugIDs_legacy)){
     ehagdhjdsdcsd <- new.env()
     utils::data("slugInfo", envir = ehagdhjdsdcsd)
-
     slugIDs <- ehagdhjdsdcsd$slugInfo$slug_id[which(ehagdhjdsdcsd$slugInfo$legacy_slugid %in% slugIDs_legacy)]
-    #rm('ehagdhjdsdcsd')
   }
 
   if(length(slugIDs) == 1){

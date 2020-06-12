@@ -17,7 +17,8 @@ Users can provide can either one slug ID or multiple slug IDs. See details.}
 
 \item{slugIDs_legacy}{Valid legacy slug IDs. Examples: LM_XB401, LM_XB403.}
 
-\item{report_time}{A valid date (e.g.,'01/31/2020') or period of time (e.g., '01/31/2020:03/25/2020'). The default is the current system date.}
+\item{report_time}{A valid date (e.g.,'01/31/2020') or period of time (e.g., '01/31/2020:03/25/2020').
+For FMMOS, it should be a year (e.g., 2019). The default is the current system date.}
 
 \item{message}{A binary indicator for whether to display warning messages or not. Default is TRUE.}
 }

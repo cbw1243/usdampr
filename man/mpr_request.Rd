@@ -49,9 +49,10 @@ such as LM_XB459 (Report name: National Weekly Boxed Beef Cutout & Boxed Beef Cu
 data are labelled by slug IDs for consistency. Users should provide either slug IDs or legacy slug IDs, not both. The provides slug IDs
 or legacy slug IDs must be valid. Use data(slugInfo) to get a list of valid slug IDs and the report information.
 
-The second input is report time. For LMPR and DPMRP, the report time shoudl be a specific date with year, month and day, such as
-"06/05/2020" for June 5th 2020. For FMMOS, the report time should be a year, such as 2020. Users can request data for a range of time
- period, such as "06/01/2020:06/05/2020" for data from June 1st 2020 to June 5th 2020.
+The second input is report time. For LMPR and DPMRP, the report time should be a specific date with year, month and day,
+formatted as: %m/%d/%Y), such as "06/05/2020" for June 5th 2020. An error message could appear if the report time is not approaritely formated.
+For FMMOS, the report time should be a year instead, such as 2020. Users can request data for a range of time period, such as "06/01/2020:06/05/2020" for data
+from June 1st 2020 to June 5th 2020.
 }
 \examples{
 \dontrun{

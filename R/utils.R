@@ -69,7 +69,7 @@ mpr_request_single <- function(slug, report_time, message){
 
   if(isTRUE(message)){
     if(sum(grepl('No Results Found', data$message)) >= 1){
-      warning('There is warning message with the request. Possibly due to inappropriate format for report_time. See details in the help file.\n',
+      warning('There is warning message with the request. Possibly due to inappropriate format for report_time (see instructions from the help file).\n The warning message is:\n',
               paste0(data$message, collapse = '..'))
     }else{
       cat('Successfully requested data for slug:', slug, '\nMultiple sections are included in the data list:\n',

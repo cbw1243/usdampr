@@ -42,7 +42,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Load all available slug IDs, report date, report sections, and report frequency
 #' # If you already know the slug IDs, you can ignore skip thie code
 #' data(slugInfo)

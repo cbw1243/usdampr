@@ -55,7 +55,7 @@ For FMMOS, the report time should be a year instead, such as 2020. Users can req
 from June 1st 2020 to June 5th 2020.
 }
 \examples{
-\dontrun{
+\donttest{
 # Load all available slug IDs, report date, report sections, and report frequency
 # If you already know the slug IDs, you can ignore skip thie code
 data(slugInfo)

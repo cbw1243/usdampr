@@ -40,7 +40,7 @@ devtools::install_github('cbw1243/usdampr')
 Install the `devtools` package if you have not done it yet. Use `install.packages('devtools')`.
 
 ### Authors & Contact   
-[Bowen Chen](www.bwchen.com), Email: bwchen0719@gmail.com     
+[Bowen Chen](https:://www.bwchen.com), Email: bwchen0719@gmail.com     
 [Elliott J. Dennis](https://agecon.unl.edu/faculty/elliott-dennis), Email: elliott.dennis@unl.edu    
 
 

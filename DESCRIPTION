@@ -1,6 +1,6 @@
 Package: usdampr
 Type: Package
-Title: Request USDA MPR historical data via the LMR API
+Title: Request USDA MPR Historical Data via the LMR API 
 Version: 1.0.0
 Authors@R: c(person(given = "Bowen", family = "Chen", role = c("aut", "cre"), email = "bwchen0719@gmail.com", comment = c(ORCID = "0000-0003-0370-2756")),
             person(given = "Elliott", family = "Dennis", role = "aut"))

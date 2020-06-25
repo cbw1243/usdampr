@@ -35,7 +35,7 @@ LMPR contains data for cattle, hogs, sheep, beef, pork, and lamb.
 }
 \details{
 This function is built on the web service provided by USDA-AMS. Alternatives to this package include text files to be
-directly downloaded via \url{https:://mpr.datamart.ams.usda.gov} (known as DATAMART),
+directly downloaded via \url{https://mpr.datamart.ams.usda.gov} (known as DATAMART),
 or direct coding of the API. Starting in April 2020, text files were made permanently unavailable.
 
 The \code{mpr_request} function  provides flexible ways to request data. Specifically, users can download data from a single report or

@@ -1,11 +1,11 @@
 Package: usdampr
 Type: Package
-Title: Request USDA MPR Historical Data via the LMR API 
+Title: Request USDA MPR Historical Data via the 'LMR' API 
 Version: 1.0.0
 Authors@R: c(person(given = "Bowen", family = "Chen", role = c("aut", "cre"), email = "bwchen0719@gmail.com", comment = c(ORCID = "0000-0003-0370-2756")),
             person(given = "Elliott", family = "Dennis", role = "aut"))
-Description: Interface to easily access data via the United States Department of Agriculture (USDA)'s LMR
-  Data API <https://mpr.datamart.ams.usda.gov/>. The downloaded data can be saved for later off-line use. 
+Description: Interface to easily access data via the United States Department of Agriculture (USDA)'s Livestock Mandatory Reporting ('LMR')
+  Data API at <https://mpr.datamart.ams.usda.gov/>. The downloaded data can be saved for later off-line use. 
   Also provide relevant information and metadata for each of the input variables needed for sending the data inquiry.   
 License: GPL (>= 2)
 Encoding: UTF-8

@@ -30,10 +30,10 @@ convert_date <- function(data){
 }
 
 mpr_request_single <- function(slug, report_time, message){
-  validIDs <- c(2451, 2453, 2455:2464, 2466:2472, 2474:2489, 2498:2524, 2656, 2659:2681, 2685:2696, 2701:2703, 2989, 2991,
+  validIDs <- c(2451, 2453, 2455:2464, 2466:2472, 2474:2489, 2498:2524, 2648, 2649, 2656, 2659:2681, 2685:2696, 2701:2703, 2989, 2991,
                 2993, 3345:3359)
   # Check slug id
-  if(!as.numeric(slug) %in% validIDs) stop('Invalid slug ID. Please check with the slugInfo data set. Use data("slugInfo").')
+  if(!as.numeric(slug) %in% validIDs) warning('Possibly invalid slug ID. Please check with the slugInfo data set. Use data("slugInfo").')
 
   slug <- paste0(slug)
 

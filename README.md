@@ -34,10 +34,16 @@ test1c <- mpr_request(slugIDs = c(2461, 2463), report_time = '01/31/2020')
 More examples are provided in the help page of the `mpr_request` function.
 
 ### Package installation   
+For the latest version of the package, please install it from the GitHub using the codes below:
 ```
 devtools::install_github('cbw1243/usdampr')
 ```
-Install the `devtools` package if you have not done it yet. Use `install.packages('devtools')`.
+Note: You need to install the `devtools` package if you have not done it yet. Use `install.packages('devtools')`.
+
+You can also install the package via `R` directly:   
+```
+install.packages('usdampr')
+```
 
 ### Authors & Contact   
 [Bowen Chen](https://www.bwchen.com), Email: bwchen0719@gmail.com     

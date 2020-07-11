@@ -1,3 +1,5 @@
+![CRAN/METACRAN](https://img.shields.io/cran/v/usdampr?color=brightgreen) ![](http://cranlogs.r-pkg.org/badges/grand-total/usdampr?color=brightgreen) 
+
 ## usdampr: Request current and historical USDA-AMS MPR data
 
 ### Background    

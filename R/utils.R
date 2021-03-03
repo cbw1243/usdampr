@@ -16,7 +16,7 @@ check_numeric <- function(dat){
 
 convert_date <- function(data){
   out <- data
-  if(grep('published_date', colnames(data))){
+  if('published_date' %in% colnames(out)){
     out[, 'published_date'] <- as.POSIXct(out[, 'published_date'], format = "%m/%d/%Y %H:%M:%S")
   }
   if('report_date' %in% colnames(out)){
@@ -65,6 +65,9 @@ mpr_request_single <- function(slug, report_time, message){
     }
     names(data_out) <- data$reportSection
   }
+  # Remove sections with NULL values.
+  data_out <- data_out[!sapply(data_out, is.null)]
+
   # Clean the dates and convert to numerical values.
   data_out <- lapply(data_out, convert_date)
 

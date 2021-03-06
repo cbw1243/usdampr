@@ -4,7 +4,7 @@
 \name{slugInfo}
 \alias{slugInfo}
 \title{A data set lists all available report information as supplied by USDA-AMS}
-\format{An object of class \code{data.frame} with 119 rows and 9 columns.}
+\format{An object of class \code{data.frame} with 127 rows and 9 columns.}
 \usage{
 data(slugInfo)
 }

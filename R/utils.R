@@ -51,6 +51,10 @@ mpr_request_single <- function(slug, report_time, message){
     request_url <- paste0('https://mpr.datamart.ams.usda.gov/services/v1.1/reports/', slug, '?q=report_year=', report_time, '&allSections=true')
   }
 
+  if(slug == 3452 | slug == 3458){
+    request_url <- paste0('https://mpr.datamart.ams.usda.gov/services/v1.1/reports/', slug, '?q=report_date=', report_time, '&allSections=true')
+  }
+
   response <- httr::GET(request_url)
   if(response$status_code == 500) stop('Internet server error. Possibly due to invalid slug id. Consider revise your request.')
 
@@ -58,7 +62,7 @@ mpr_request_single <- function(slug, report_time, message){
   data_out <- data[['results']]
 
   if(!is.null(data_out))  {
-    if(slug > 3000) {# dairy data
+    if(slug > 3000 & slug != 3452 & slug != 3458) {# dairy data
       for(i in 2:length(data_out)){
         data_out[[i]] <- reshape_func(data_out[[i]])
       }
